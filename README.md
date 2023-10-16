@@ -1,10 +1,10 @@
-# TEAM TOADD team number
+# TEAM 5
 
 ## App name
 
 ## Team members
 
-TOADD names of the team members
+Wesley Wu, Aiden Nguyen, Anthony Testani, and Alexander Klisouriotis
 TOADD picture of the team
 
 ## App description
