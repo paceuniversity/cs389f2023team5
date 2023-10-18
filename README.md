@@ -1,14 +1,14 @@
 # TEAM 5
 
 ## App name
-
+Buff-Bot
 ## Team members
 
 Wesley Wu, Aiden Nguyen, Anthony Testani, and Alexander Klisouriotis
 TOADD picture of the team
 
 ## App description
-
+This app is a new way to get motivated for fitness, with planned regiments for beginners, and trackers and leaderboards to keep veterans hooked.
 ## Idea Proposal
 [Idea Proposal]()
 
