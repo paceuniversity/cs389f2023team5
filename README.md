@@ -17,6 +17,7 @@ This app is a new way to get motivated for fitness, with planned regiments for b
 
 ## Product Backlog
 [Product Backlog](https://docs.google.com/spreadsheets/d/1TxxvPksIid2ZLBNWCzeF92_CP9E5pVampBs1OXtXnNs/edit)
+[Requirement Validation](https://docs.google.com/document/d/1PRvenuOUbubjQ3gFEUYluQxH_0zGCpESfvwdeY30O3U/edit?usp=sharing)
 
 ## Architecture & Design
 [Architecture & Design]()
