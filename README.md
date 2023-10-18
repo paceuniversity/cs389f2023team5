@@ -10,7 +10,7 @@ TOADD picture of the team
 ## App description
 This app is a new way to get motivated for fitness, with planned regiments for beginners, and trackers and leaderboards to keep veterans hooked.
 ## Idea Proposal
-[Idea Proposal]()
+[Idea Proposal](https://docs.google.com/document/d/1-2mf7BlIIZyr6bSRgUvvQRJEN9nClBOUSZ32IOauevg/edit?usp=sharing)
 
 ## Calendar
 [Calendar](https://calendar.google.com/calendar/u/0?cid=aXZoMmU3NjhzMjRkdGlxZWYwcXZvbzhxcjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
