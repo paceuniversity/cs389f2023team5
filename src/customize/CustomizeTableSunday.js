@@ -144,6 +144,7 @@ const CustomizeTableSunday = () => {
           </tbody>
         </table>
       </form>
+      
       {showForm ? (
         <form onSubmit={handleAddFormSubmit}>
           <input
@@ -172,7 +173,7 @@ const CustomizeTableSunday = () => {
         </form>
       ) : (
         <>
-        <button onClick={() => setShowForm(true)}>Add new Workout</button>
+          <button onClick={() => setShowForm(true)}>Add new Workout</button>
         </>
       )}
     </div>

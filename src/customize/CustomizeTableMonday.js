@@ -109,6 +109,8 @@ const CustomizeTableMonday = () => {
     setWorkouts(newWorkouts);
   };
 
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="customize-table">
       <form onSubmit={handleEditFormSubmit}>
@@ -143,31 +145,37 @@ const CustomizeTableMonday = () => {
         </table>
       </form>
 
-      <h2>Add a Workout</h2>
-      <form onSubmit={handleAddFormSubmit}>
-        <input
-          type="text"
-          required="required"
-          placeholder="Enter a workout"
-          name="workoutName"
-          onChange={handleAddFormChange}
-        ></input>
-        <input
-          type="number"
-          required="required"
-          placeholder="Enter amount of sets"
-          name="sets"
-          onChange={handleAddFormChange}
-        ></input>
-        <input
-          type="number"
-          required="required"
-          placeholder="Enter amount of reps"
-          name="reps"
-          onChange={handleAddFormChange}
-        ></input>
-        <button type="submit">Add</button>
-      </form>
+      {showForm ? (
+        <form onSubmit={handleAddFormSubmit}>
+          <input
+            type="text"
+            required="required"
+            placeholder="Enter a workout"
+            name="workoutName"
+            onChange={handleAddFormChange}
+          ></input>
+          <input
+            type="number"
+            required="required"
+            placeholder="Enter amount of sets"
+            name="sets"
+            onChange={handleAddFormChange}
+          ></input>
+          <input
+            type="number"
+            required="required"
+            placeholder="Enter amount of reps"
+            name="reps"
+            onChange={handleAddFormChange}
+          ></input>
+          <button type="submit">Add</button>
+          <button onClick={() => setShowForm(false)}>Cancel</button>
+        </form>
+      ) : (
+        <>
+          <button onClick={() => setShowForm(true)}>Add new Workout</button>
+        </>
+      )}
     </div>
   );
 };
