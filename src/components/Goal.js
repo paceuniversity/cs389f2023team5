@@ -37,8 +37,8 @@ function valuetext(value) {
 
     return (
       <Container>
+        <div className='app'>
         <h3>Select Number of Hours Free per Day Below</h3>
-        <div>
           {/* <TextField id="outlined-basic" label="Monday" variant="outlined" /><br></br><br></br>
           <TextField id="outlined-basic" label="Tuesday" variant="outlined" /><br></br><br></br>
           <TextField id="outlined-basic" label="Wednesday" variant="outlined" /><br></br><br></br>
