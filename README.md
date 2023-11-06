@@ -30,7 +30,7 @@ This app is a new way to get motivated for fitness, with planned regiments for b
 * [Sprint planning]()
 * [Scrums](https://drive.google.com/drive/folders/12I36c0Ec8odGg4_dmFaJa_SX8lojU6S7?usp=sharing)
 * [Sprint demo video](https://drive.google.com/drive/folders/1gEacxdSpYoHf4AQBjEIvN7-ThBbmaJjw?usp=sharing)
-* [Sprint retrospective]()
+* [Sprint retrospective](https://docs.google.com/document/d/1-Q82Iq7qV21DvX3pewwg7u8ObfGVbBCCD-VH7I6WreU/edit?usp=sharing)
 
 ### Sprint 2
 
