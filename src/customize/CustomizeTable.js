@@ -1,5 +1,7 @@
 import React, { useState, Fragment } from "react";
 
+import { nanoid } from "nanoid";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -15,6 +17,12 @@ import CustomizeEditableRow from "./CustomizeEditableRow";
 const CustomizeTable = () => {
   const [workouts, setWorkouts] = useState(data);
 
+  const [addFormData, setAddFormData] = useState({
+    workoutName: "",
+    sets: "",
+    reps: "",
+  });
+
   const [editFormData, setEditFormData] = useState({
     workoutName: "",
     sets: "",
@@ -22,6 +30,18 @@ const CustomizeTable = () => {
   });
 
   const [editWorkoutId, setEditWorkoutId] = useState(null);
+
+  const handleAddFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddFormData(newFormData);
+  };
 
   const handleEditFormChange = (event) => {
     event.preventDefault();
@@ -33,6 +53,19 @@ const CustomizeTable = () => {
     newFormData[fieldName] = fieldValue;
 
     setEditFormData(newFormData);
+  };
+
+  const handleAddFormSubmit = (event) => {
+    event.preventDefault();
+    const newWorkout = {
+      id: nanoid(),
+      workoutName: addFormData.workoutName,
+      sets: addFormData.sets,
+      reps: addFormData.reps,
+    };
+
+    const newWorkouts = [...workouts, newWorkout];
+    setWorkouts(newWorkouts);
   };
 
   const handleEditFormSubmit = (event) => {
@@ -114,6 +147,32 @@ const CustomizeTable = () => {
             ))}
           </tbody>
         </table>
+      </form>
+
+      <h2>Add a Workout</h2>
+      <form onSubmit={handleAddFormSubmit}>
+        <input
+          type="text"
+          required="required"
+          placeholder="Enter a workout"
+          name="workoutName"
+          onChange={handleAddFormChange}
+        ></input>
+        <input
+          type="number"
+          required="required"
+          placeholder="Enter amount of sets"
+          name="sets"
+          onChange={handleAddFormChange}
+        ></input>
+        <input
+          type="number"
+          required="required"
+          placeholder="Enter amount of reps"
+          name="reps"
+          onChange={handleAddFormChange}
+        ></input>
+        <button type="submit">Add</button>
       </form>
     </div>
 

@@ -1,6 +1,4 @@
 import React from "react";
-
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const CustomizeEditableRow = ({
