@@ -39,7 +39,9 @@ const CustomizeEditableRow = ({
         ></input>
       </td>
       <td>
-        <button className='save-icon' type='submit'>Save</button>
+        <button className="save-icon" type="submit">
+          Save
+        </button>
         <HighlightOffIcon
           className="cancel-icon"
           type="button"

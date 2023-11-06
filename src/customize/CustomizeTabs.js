@@ -4,7 +4,13 @@ import PropTypes from "prop-types";
 
 import { Tabs, Tab, Typography, Box } from "@mui/material";
 
-import CustomizeTable from "./CustomizeTable";
+import CustomizeTableSunday from "./CustomizeTableSunday";
+import CustomizeTableMonday from "./CustomizeTableMonday";
+import CustomizeTableTuesday from "./CustomizeTableTuesday";
+import CustomizeTableWednesday from "./CustomizeTableWednesday";
+import CustomizeTableThursday from "./CustomizeTableThursday";
+import CustomizeTableFriday from "./CustomizeTableFriday";
+import CustomizeTableSaturday from "./CustomizeTableSaturday";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,37 +67,37 @@ function CustomizeTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         <div className="sunday-workout">
-          <CustomizeTable />
+          <CustomizeTableSunday />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <div className="monday-workout">
-          <CustomizeTable />
+          <CustomizeTableMonday />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <div className="tuesday-workout">
-          <CustomizeTable />
+          <CustomizeTableTuesday />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <div className="wednesday-workout">
-          <CustomizeTable />
+          <CustomizeTableWednesday />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         <div className="thursday-workout">
-          <CustomizeTable />
+          <CustomizeTableThursday />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
         <div className="friday-workout">
-          <CustomizeTable />
+          <CustomizeTableFriday />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={6}>
         <div className="saturday-workout">
-          <CustomizeTable />
+          <CustomizeTableSaturday />
         </div>
       </CustomTabPanel>
     </Box>
