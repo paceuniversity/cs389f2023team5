@@ -19,27 +19,31 @@ import { createClient } from "@supabase/supabase-js";
 function App() {
   const name = "John";
   const city = "NYC";
-  // const [session, setSession] = useState(null)
-  // useEffect(() => {
-  //   supabase.auth.getSession().then(({ data: { session } }) => {
-  //     setSession(session)
-  //   })
+  let [count, setCount] = useState(0);
+  const [session, setSession] = useState(null)
+  const supabase = createClient("https://eilymrhzimawhwaeqobo.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpbHltcmh6aW1hd2h3YWVxb2JvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkwNDEyMTEsImV4cCI6MjAxNDYxNzIxMX0.bp6heCDwjm_cH30PJ1XGc87tPS9rB2aXeE_UcUKQWAQ");
 
-  //   const {
-  //     data: { subscription },
-  //   } = supabase.auth.onAuthStateChange((_event, session) => {
-  //     setSession(session)
-  //   })
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
 
-  //   return () => subscription.unsubscribe()
-  // }, [])
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
 
-  // if (!session) {
-  //   return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
-  // }
-  // else
+    return () => subscription.unsubscribe()
+  }, [])
+
+  if (!session) {
+    return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
+  }
+  else {
     return (
-      <Container>
+      
+      <div>
         <Router>
           {/* <ul>
             <li>
@@ -60,7 +64,9 @@ function App() {
               <Link to={`/contact/${name}/${city}`}>Contact</Link>
             </li>
           </ul> */}
-          <Navbar/>
+          
+        
+        <Navbar/>
           <Switch>
             
             <Route path="/" exact component={Goal} />
@@ -75,10 +81,10 @@ function App() {
             <Route render={() => <h3>404: Page not found</h3>} />
           </Switch>
         </Router >
-      </Container>
+      </div>
     )
   }
-// }
+}
 
 export default App;
 
@@ -98,28 +104,28 @@ export default App;
 // function App() {
   // const name = "Rohn";
   // const city = "NYC";
-//   let [count, setCount] = useState(0);
-//   const [session, setSession] = useState(null)
-//   const supabase = createClient("https://eilymrhzimawhwaeqobo.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpbHltcmh6aW1hd2h3YWVxb2JvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkwNDEyMTEsImV4cCI6MjAxNDYxNzIxMX0.bp6heCDwjm_cH30PJ1XGc87tPS9rB2aXeE_UcUKQWAQ");
+  // let [count, setCount] = useState(0);
+  // const [session, setSession] = useState(null)
+  // const supabase = createClient("https://eilymrhzimawhwaeqobo.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpbHltcmh6aW1hd2h3YWVxb2JvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkwNDEyMTEsImV4cCI6MjAxNDYxNzIxMX0.bp6heCDwjm_cH30PJ1XGc87tPS9rB2aXeE_UcUKQWAQ");
 
-//   useEffect(() => {
-//     supabase.auth.getSession().then(({ data: { session } }) => {
-//       setSession(session)
-//     })
+  // useEffect(() => {
+  //   supabase.auth.getSession().then(({ data: { session } }) => {
+  //     setSession(session)
+  //   })
 
-//     const {
-//       data: { subscription },
-//     } = supabase.auth.onAuthStateChange((_event, session) => {
-//       setSession(session)
-//     })
+  //   const {
+  //     data: { subscription },
+  //   } = supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session)
+  //   })
 
-//     return () => subscription.unsubscribe()
-//   }, [])
+  //   return () => subscription.unsubscribe()
+  // }, [])
 
-//   if (!session) {
-//     return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
-//   }
-//   else {
+  // if (!session) {
+  //   return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
+  // }
+  // else {
 //     return (
 //       <Container>
 //         <Router>

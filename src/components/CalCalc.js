@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
+import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
 import '../index.css';
+import { Menu, MenuItem } from '@mui/material';
 
 function CalCalc() {
   // state
@@ -8,6 +11,7 @@ function CalCalc() {
   const [height, setHeight] = useState();
   const [age, setAge] = useState();
   const [gender, setGender] = useState('male'); // Default gender
+  const [activityLevel, setActivityLevel] = useState('sedentary');
   const [bmr, setBMR] = useState();
 
   const calcBMR = (event) => {
@@ -19,6 +23,26 @@ function CalCalc() {
     } else {
       let s = gender === 'male' ? 5 : -161;
       let bmrValue = 10 * weight + 6.25 * height - 5 * age + s;
+      // adjust bmr based on activity lvl
+      switch (activityLevel) {
+        case 'sedentary':
+          bmrValue *= 1.2;
+          break;
+        case 'lightlyActive':
+          bmrValue *= 1.375;
+          break;
+        case 'moderatelyActive':
+          bmrValue *= 1.55;
+          break;
+        case 'veryActive':
+          bmrValue *= 1.725;
+          break;
+        case 'superActive':
+          bmrValue *= 1.9;
+          break;
+        default:
+          break;
+      }
       setBMR(bmrValue);
     }
   };
@@ -46,18 +70,28 @@ function CalCalc() {
           </div>
           <div>
             <label>Gender</label>
-            <select value={gender} onChange={(event) => setGender(event.target.value)}>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
+            <Select value={gender} onChange={(event) => setGender(event.target.value)}>
+              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="female">Female</MenuItem>
+            </Select>
           </div>
           <div>
-            <button className="btn" type="submit">
-              Calculate 
-            </button>
-            <button className="btn btn-outline" onClick={reload} type="submit">
+            <label>Activity Level</label>
+            <Select value={activityLevel} onChange={(event) => setActivityLevel(event.target.value)}>
+            <MenuItem value="sedentary">Sedentary</MenuItem>
+              <MenuItem value="lightlyActive">Lightly Active</MenuItem>
+              <MenuItem value="moderatelyActive">Moderately Active</MenuItem>
+              <MenuItem value="veryActive">Very Active</MenuItem>
+              <MenuItem value="superActive">Super Active</MenuItem>
+            </Select>
+          </div>
+          <div>
+          <Button variant="contained" className='Button'>Calculate</Button>
+          &nbsp;
+            <Button variant="contained" onClick={reload} type="submit">
               Reload
-            </button>
+            </Button>
+
           </div>
         </form>
 
@@ -66,7 +100,7 @@ function CalCalc() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default CalCalc;

@@ -38,7 +38,8 @@ function valuetext(value) {
     return (
       <Container>
         <div className='app'>
-        <h3>Select Number of Hours Free per Day Below</h3>
+        <div className='container'>
+        <h3>Select Number of Hours Free per Day Below</h3><br></br>
           {/* <TextField id="outlined-basic" label="Monday" variant="outlined" /><br></br><br></br>
           <TextField id="outlined-basic" label="Tuesday" variant="outlined" /><br></br><br></br>
           <TextField id="outlined-basic" label="Wednesday" variant="outlined" /><br></br><br></br>
@@ -146,7 +147,7 @@ function valuetext(value) {
           /></Box>
 
           
-          <Button variant="contained" onClick={goHome}>Next</Button>
+          <Button variant="contained" size = "large" onClick={goHome}>Next</Button>
           <br></br><br></br>
 
           <FormControl sx={{ m: 1, minWidth: 80 }}>
@@ -167,6 +168,7 @@ function valuetext(value) {
           <MenuItem value={"maintain"}>Maintain Weight</MenuItem>
         </Select>
       </FormControl>
+        </div>
         </div>
         
         {console.log(props.location.state)}
