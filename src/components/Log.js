@@ -75,7 +75,7 @@ const Log = (props) => {
             addCountToDatabase(squatCountData, 'SquatCount');
         }
     
-        appHistory.push('/');
+        appHistory.push('/diary');
     };
     return (
         <Container>
