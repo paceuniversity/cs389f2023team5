@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 
 import { nanoid } from "nanoid";
 
-import data from "./data.json";
+import data from "../data.json";
 import CustomizeReadOnlyRow from "./CustomizeReadOnlyRow";
 import CustomizeEditableRow from "./CustomizeEditableRow";
 

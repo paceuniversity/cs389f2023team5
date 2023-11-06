@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import CustomizeButton from './customize/CustomizeButton';
+import CustomizeTabs from "./customize/CustomizeTabs";
 
 //import './App.css';
 
 function App() {
   return (
-    <div className='regiment-app'>
-      <CustomizeButton />
+    <div className="regiment-app">
+      <CustomizeTabs />
     </div>
   );
 }

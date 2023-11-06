@@ -1,57 +1,70 @@
-# TEAM 5
+# Getting Started with Create React App
 
-## App name
-Buff-Bot
-## Team members
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Wesley Wu, Aiden Nguyen, Anthony Testani, and Alexander Klisouriotis
-TOADD picture of the team
+## Available Scripts
 
-## App description
-This app is a new way to get motivated for fitness, with planned regiments for beginners, and trackers and leaderboards to keep veterans hooked.
-## Idea Proposal
-[Idea Proposal](https://docs.google.com/document/d/1-2mf7BlIIZyr6bSRgUvvQRJEN9nClBOUSZ32IOauevg/edit?usp=sharing)
+In the project directory, you can run:
 
-## Calendar
-[Calendar](https://calendar.google.com/calendar/u/0?cid=aXZoMmU3NjhzMjRkdGlxZWYwcXZvbzhxcjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
+### `npm start`
 
-## Product Backlog
-[Product Backlog](https://docs.google.com/spreadsheets/d/1TxxvPksIid2ZLBNWCzeF92_CP9E5pVampBs1OXtXnNs/edit)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-[Requirement Validation](https://docs.google.com/document/d/1PRvenuOUbubjQ3gFEUYluQxH_0zGCpESfvwdeY30O3U/edit?usp=sharing)
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## Architecture & Design
-[Architecture & Design]()
+### `npm test`
 
-## Process
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Sprint 1
+### `npm run build`
 
-* [Sprint planning]()
-* [Scrums](https://drive.google.com/drive/folders/12I36c0Ec8odGg4_dmFaJa_SX8lojU6S7?usp=sharing)
-* [Sprint demo video]()
-* [Sprint retrospective]()
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Sprint 2
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-* [Sprint planning]()
-* [Scrums]()
-* [Sprint demo video]()
-* [Sprint retrospective]()
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Sprint 3
+### `npm run eject`
 
-* [Sprint planning]()
-* [Scrums]()
-* [Sprint demo video]()
-* [Sprint retrospective]()
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Tools & APIs
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Final delivery
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-* [Final presentation]()
-* [Poster]()
-* [Process description]()
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
