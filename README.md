@@ -4,7 +4,7 @@
 Buff-Bot
 ## Team members
 
-Wesley Wu, Aiden Nguyen, Anthony Testani, and Alexander Klisouriotis
+Wesley Wu, Aiden Nguyen, Anthony Testani, and Alexander Klisouriotis (Scrum Guardian)
 TOADD picture of the team
 
 ## App description
