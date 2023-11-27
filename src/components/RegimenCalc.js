@@ -3,7 +3,7 @@ import supabase from '../db/supa';
 import { Container } from 'react-bootstrap';
 
 
-const regimenCalc = () => {
+const RegimenCalc = () => {
     const [latestMonday, setLatestMonday]= useState(null);
     const [latestTuesday, setLatestTuesday]= useState(null);
     const [latestWednesday, setLatestWednesday]= useState(null);
@@ -372,7 +372,7 @@ const regimenCalc = () => {
 
 
 }
-export default regimenCalc;
+export default RegimenCalc;
 
 /* import React, { useState, useEffect } from 'react';
 import supabase from '../db/supa';
