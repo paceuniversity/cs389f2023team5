@@ -19,8 +19,7 @@ import { createClient } from "@supabase/supabase-js";
 import Regimen from './components/Regimen.js';
 import Exercise from "./exerciseInfo/Exercise.js";
 import RegimenCalc from './components/RegimenCalc.js';
-
-import HomePage from './components/HomePage.js';
+import Home from './components/Home.js';
 
 function App() {
   const name = "John";
@@ -79,7 +78,7 @@ function App() {
             <Route path="/regimencalc" exact component={RegimenCalc} />
             <Route path="/regimen" exact component={Regimen} />
             <Route path="/goal" exact component={Goal} />
-            <Route path="/" exact component={HomePage} />
+            <Route path="/" exact component={Home} />
             <Route path="/diary" exact component = {Diary} />
             <Route path="/about/:name" component = {About}/>
             <Route path="contact" exact component={DefaultContact} />
