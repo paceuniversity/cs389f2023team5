@@ -19,6 +19,8 @@ import { createClient } from "@supabase/supabase-js";
 import Regimen from './components/Regimen.js';
 import Exercise from "./exerciseInfo/Exercise.js";
 import RegimenCalc from './components/RegimenCalc.js';
+import Faq from './components/Faq.js';
+import Feedback from './components/Feedback.js';
 import Home from './components/Home.js';
 
 function App() {
@@ -87,6 +89,9 @@ function App() {
             <Route path="/calcalc" exact component={CalCalc} />
             <Route path="/signOut" component={signOut} />
             <Route path="/counter" component={Counter} />
+            <Route path="/faq" component={Faq} />
+            <Route path="/feedback" component={Feedback} />
+
             <Route render={() => <h3>404: Page not found</h3>} />
           </Switch>
         </Router >

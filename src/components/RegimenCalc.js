@@ -17,16 +17,23 @@ const RegimenCalc = () => {
     const push = ['incline press','flat press','shoulder press', 'lateral raises', 'tricep extensions', 'overhead extensions']
     const full = ['bench', 'squat', 'pulldown', 'hamstring curls', 'shoulder press', 'rdl']
     
+    const [workouts, setWorkouts] = useState([]);
+    
     const addToDatabase = async (id, day, wrkoutNme, sets ,reps) => {
         const { error } = await supabase
             .from('Regimen')
             .upsert([{id, day, name: wrkoutNme, sets, reps}]);
-              
+
+            
         if (error) {
             console.error(`Error adding record to Regimen table:`, error);
         } else {
             console.log(`Record added to Regimen table:`, id);
         }
+        setWorkouts(prevWorkouts => [
+            ...prevWorkouts,
+            { id, day, name: wrkoutNme, sets, reps }
+        ]);
     };
 
     const creator = () => {
@@ -235,6 +242,8 @@ const RegimenCalc = () => {
             // Full Body 
             // addToDatabase(i, week[firstDay-1][0], legs[i])
         }
+        // Ensure to clear previous workouts before creating new ones
+        setWorkouts([]);
     };
     const fetchLatestDay = async () => {
         const { data: mondayData, error: mondayError } = await supabase
@@ -368,22 +377,49 @@ const RegimenCalc = () => {
 
     
 
+    // return (
+    //     <Container>
+    //       <div className="App">
+    //         <h1>Hello</h1>
+    //         <br></br>
+    //         <h2>Monday: {latestMonday }</h2>
+    //         <h2>Tuesday: {latestTuesday }</h2> 
+    //         <h2>Wednesday: {latestWednesday }</h2>
+    //         <h2>Thursday: {latestThursday }</h2>
+    //         <h2>Friday: {latestFriday }</h2>
+    //         <h2>Saturday: {latestSaturday }</h2>
+    //         <h2>Sunday: {latestSunday }</h2>
+            
+    //       </div>
+    //     </Container>
+    // );
     return (
         <Container>
-          <div className="App">
-            <h1>Hello</h1>
-            <br></br>
-            <h2>Monday: {latestMonday }</h2>
-            <h2>Tuesday: {latestTuesday }</h2> 
-            <h2>Wednesday: {latestWednesday }</h2>
-            <h2>Thursday: {latestThursday }</h2>
-            <h2>Friday: {latestFriday }</h2>
-            <h2>Saturday: {latestSaturday }</h2>
-            <h2>Sunday: {latestSunday }</h2>
-          </div>
+            <div className="App">
+                <h1>Workout Plan</h1>
+                <br/>
+                {workouts.map(workout => (
+                    <div key={workout.id}>
+                        <p>Day: {workout.day}</p>
+                        <p>Exercise: {workout.name}</p>
+                        <p>Sets: {workout.sets}</p>
+                        <p>Reps: {workout.reps}</p>
+                        <hr/>
+                    </div>
+                ))}
+                <h2>Monday: {latestMonday}</h2>
+                <h2>Tuesday: {latestTuesday}</h2>
+                <h2>Wednesday: {latestWednesday }</h2>
+                <h2>Thursday: {latestThursday }</h2>
+                <h2>Friday: {latestFriday }</h2>
+                <h2>Saturday: {latestSaturday }</h2>
+                <h2>Sunday: {latestSunday }</h2>
+                
+
+                
+            </div>
         </Container>
     );
-    
 
 
 
