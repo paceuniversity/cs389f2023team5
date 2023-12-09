@@ -16,13 +16,10 @@ import { signOut } from './components/signOut';
 import './index.css';
 import Navbar from './components/Navbar';
 import { createClient } from "@supabase/supabase-js";
-import Regiment from './components/Regiment.js';
-
-import RegimentCalc from './components/RegimentCalc.js';
-
-import HomePage from './components/HomePage.js';
-
-
+import Regimen from './components/Regimen.js';
+import Exercise from "./exerciseInfo/Exercise.js";
+import RegimenCalc from './components/RegimenCalc.js';
+import Home from './components/Home.js';
 
 function App() {
   const name = "John";
@@ -77,11 +74,11 @@ function App() {
         <Navbar/>
           <Switch>
             
-            <Route path="/" exact component={Goal} />
-            <Route path="/RegimentCalc" exact component={RegimentCalc} />
-            <Route path="/regiment" exact component={Regiment} />
-            <Route path= "/HomePage" exact component={HomePage}/>
-            
+            <Route path="/exercise" exact component={Exercise} />
+            <Route path="/regimencalc" exact component={RegimenCalc} />
+            <Route path="/regimen" exact component={Regimen} />
+            <Route path="/goal" exact component={Goal} />
+            <Route path="/" exact component={Home} />
             <Route path="/diary" exact component = {Diary} />
             <Route path="/about/:name" component = {About}/>
             <Route path="contact" exact component={DefaultContact} />

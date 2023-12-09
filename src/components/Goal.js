@@ -34,8 +34,8 @@ const Goal = (props) => {
       setGoal(event.target.value);
       
   }
-  const goHome = () => {
-    appHistory.push('/', count); 
+  const goRegimen = () => {
+    appHistory.push('/RegimenCalc', count); 
 }
 const [monday, setMonday] = useState(0);
 const [tuesday, setTuesday] = useState(0);
@@ -112,7 +112,7 @@ const addOrUpdateDayHours = async (dayData) => {
   } else {
     console.log(`Record updated for ${dayData.day}`);
   }
-  appHistory.push('/', count);
+  appHistory.push('/regimencalc', count);
 }
 // const [mondayValue, setMondayValue] = useState(0);
 // const [tuesdayValue, setTuesdayValue] = useState(0);
