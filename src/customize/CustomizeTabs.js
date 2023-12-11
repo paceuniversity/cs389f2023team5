@@ -53,8 +53,9 @@ function CustomizeTabs() {
   };
 
   return (
-    <Box className="tabs" sx={{ width: "100%", bgcolor: "background.paper" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+    <div sx={{width: '50vw',  overflowX: 'auto'}}>
+    <Box className="tabs" sx={{ width: "80vw", bgcolor: "background.paper",  overflowX: 'auto'}}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider",  overflowX: 'auto' }}>
         <Tabs value={value} onChange={handleChange} centered>
           <Tab label="Sunday" {...a11yProps(0)} />
           <Tab label="Monday" {...a11yProps(1)} />
@@ -101,6 +102,7 @@ function CustomizeTabs() {
         </div>
       </CustomTabPanel>
     </Box>
+    </div>
   );
 }
 

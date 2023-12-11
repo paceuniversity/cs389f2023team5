@@ -6,6 +6,7 @@ import CustomizeButton from '../customize/CustomizeButton';
 
 function Regimen() {
   return (
+    
     <div>
       <CustomizeButton />
     </div>

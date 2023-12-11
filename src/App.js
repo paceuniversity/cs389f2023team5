@@ -19,10 +19,12 @@ import { createClient } from "@supabase/supabase-js";
 import Regimen from './components/Regimen.js';
 import Exercise from "./exerciseInfo/Exercise.js";
 import RegimenCalc from './components/RegimenCalc.js';
+import Find from './components/Find.js'
 import Faq from './components/Faq.js';
 import Feedback from './components/Feedback.js';
 import Home from './components/Home.js';
 import Tools from './components/tools.js'
+import Friends from './components/Friends.js';
 
 function App() {
   const [session, setSession] = useState(null)
@@ -56,9 +58,10 @@ function App() {
           <Switch>
             
             <Route path="/exercise" exact component={Exercise} />
+            <Route path="/friends" exact component={Friends} />
+            <Route path="/find" exact component={Find} />
             <Route path="/regimencalc" exact component={RegimenCalc} />
             <Route path="/regimen" exact component={Regimen} />
-            <Route path="/goal" exact component={Goal} />
             <Route path="/" exact component={Home} />
             <Route path="/diary" exact component = {Diary} />
             <Route path="/about/:name" component = {About}/>
