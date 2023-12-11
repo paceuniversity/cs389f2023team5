@@ -80,4 +80,24 @@ code {
 
 .Button{
   color: black;
+}/*help-block*/
+.workouts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Adjusts the spacing between items */
+}
+
+.workout-card {
+  flex: 0 1 30%; /* Adjust the flex-basis to control the width of each card */
+  margin: 10px; /* Spacing around each card */
+  padding: 10px; /* Padding inside each card */
+  border: 1px solid #ccc; /* Optional border for visibility */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* Optional shadow for aesthetics */
+}
+
+/* Responsive design: On smaller screens, make cards take full width */
+@media (max-width: 600px) {
+  .workout-card {
+      flex-basis: 100%;
+  }
 }

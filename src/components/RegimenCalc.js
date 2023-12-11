@@ -18,6 +18,8 @@ const RegimenCalc = () => {
     const full = ['bench', 'squat', 'pulldown', 'hamstring curls', 'shoulder press', 'rdl']
     
     const [workouts, setWorkouts] = useState([]);
+
+    
     
     const addToDatabase = async (id, day, wrkoutNme, sets ,reps) => {
         const { error } = await supabase
@@ -395,18 +397,19 @@ const RegimenCalc = () => {
     // );
     return (
         <Container>
-            <div className="App">
-                <h1>Workout Plan</h1>
-                <br/>
+        <div className="App">
+            <h1>Workout Plan</h1>
+            <br/>
+            <div className="workouts-grid">
                 {workouts.map(workout => (
-                    <div key={workout.id}>
-                        <p>Day: {workout.day}</p>
-                        <p>Exercise: {workout.name}</p>
-                        <p>Sets: {workout.sets}</p>
-                        <p>Reps: {workout.reps}</p>
-                        <hr/>
+                    <div key={workout.id} className="workout-card">
+                        <div><strong>Day:</strong> {workout.day}</div>
+                        <div><strong>Exercise:</strong> {workout.name}</div>
+                        <div><strong>Sets:</strong> {workout.sets}</div>
+                        <div><strong>Reps:</strong> {workout.reps}</div>
                     </div>
                 ))}
+            </div>
                 <h2>Monday: {latestMonday}</h2>
                 <h2>Tuesday: {latestTuesday}</h2>
                 <h2>Wednesday: {latestWednesday }</h2>
@@ -470,4 +473,14 @@ const regimenCalc = () => {
         //     );
         // };
         
-        // export default regimenCalc; */
+        // export default regimenCalc; 
+        // <h2>Monday: {latestMonday}</h2>
+        //         <h2>Tuesday: {latestTuesday}</h2>
+        //         <h2>Wednesday: {latestWednesday }</h2>
+        //         <h2>Thursday: {latestThursday }</h2>
+        //         <h2>Friday: {latestFriday }</h2>
+        //         <h2>Saturday: {latestSaturday }</h2>
+        //         <h2>Sunday: {latestSunday }</h2>
+        
+        
+    
