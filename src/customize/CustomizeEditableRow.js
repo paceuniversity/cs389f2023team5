@@ -1,6 +1,7 @@
 import React from "react";
-
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import SaveIcon from '@mui/icons-material/Save';
+import { IconButton } from "@mui/material";
 
 const CustomizeEditableRow = ({
   editFormData,
@@ -14,8 +15,8 @@ const CustomizeEditableRow = ({
           type="text"
           required="required"
           placeholder="Enter a workout"
-          name="workoutName"
-          value={editFormData.workoutName}
+          name="name"
+          value={editFormData.name}
           onChange={handleEditFormChange}
         ></input>
       </td>
@@ -40,9 +41,10 @@ const CustomizeEditableRow = ({
         ></input>
       </td>
       <td>
-        <button className="save-icon" type="submit">
-          Save
-        </button>
+        <IconButton className="save-icon" type="submit">
+        <SaveIcon size='small'>
+        </SaveIcon>
+        </IconButton>
         <HighlightOffIcon
           className="cancel-icon"
           type="button"

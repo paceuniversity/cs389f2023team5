@@ -54,7 +54,7 @@ function CustomizeTabs() {
 
   return (
     <Box className="tabs" sx={{ width: "100%", bgcolor: "background.paper" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider", boxShadow: 3 }}>
         <Tabs value={value} onChange={handleChange} centered>
           <Tab label="Sunday" {...a11yProps(0)} />
           <Tab label="Monday" {...a11yProps(1)} />

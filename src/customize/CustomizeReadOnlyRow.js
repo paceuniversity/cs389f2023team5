@@ -1,7 +1,6 @@
 import React from "react";
 
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-
 import EditNoteIcon from "@mui/icons-material/EditNote";
 
 const CustomizeReadOnlyRow = ({
@@ -11,7 +10,7 @@ const CustomizeReadOnlyRow = ({
 }) => {
   return (
     <tr>
-      <td>{workout.workoutName}</td>
+      <td>{workout.name}</td>
       <td>{workout.sets}</td>
       <td>{workout.reps}</td>
       <td>
