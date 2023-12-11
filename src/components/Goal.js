@@ -34,8 +34,8 @@ const Goal = (props) => {
       setGoal(event.target.value);
       
   }
-  const goHome = () => {
-    appHistory.push('/', count); 
+  const goRegimen = () => {
+    appHistory.push('/RegimenCalc', count); 
 }
 const [monday, setMonday] = useState(0);
 const [tuesday, setTuesday] = useState(0);
@@ -112,7 +112,7 @@ const addOrUpdateDayHours = async (dayData) => {
   } else {
     console.log(`Record updated for ${dayData.day}`);
   }
-  appHistory.push('/', count);
+  appHistory.push('/regimencalc', count);
 }
 // const [mondayValue, setMondayValue] = useState(0);
 // const [tuesdayValue, setTuesdayValue] = useState(0);
@@ -310,25 +310,6 @@ function valuetext(value) {
             <Button variant="contained" size = "large" onClick = {handleGoalSubmit} >Next</Button>
             {/* onClick={handleGoalSubmit} */}
           <br></br><br></br>
-
-          <FormControl sx={{ m: 1, minWidth: 90 }}>
-        <InputLabel id="demo-simple-select-autowidth-label">Goal</InputLabel>
-        <Select
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth"
-          value={goal}
-          onChange={handleChange}
-          autoWidth
-          label="Goal"
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={"fatLoss"}>Fat Loss</MenuItem>
-          <MenuItem value={"muscleGain"}>Muscle Gain</MenuItem>
-          <MenuItem value={"maintain"}>Maintain Weight</MenuItem>
-        </Select>
-      </FormControl>
         </div>
         </div>
         

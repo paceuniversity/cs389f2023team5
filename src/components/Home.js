@@ -10,16 +10,17 @@ import Select from '@mui/material/Select';
 const Home = (props) => {
 
     
-    return (
-      <Container>
-        <div className="App"> 
-       
-       <h1>Welcome to BuffBot</h1>
-       <h2>A free online workout and fitness aid</h2>
-       
-       </div>
-      </Container>
-    )
+  return (
+    <Container>
+      <div className="App"> 
+     
+     <h1>Welcome to BuffBot</h1>
+     <h2>A free online workout and fitness aid</h2>
+     
+     <img src="/workout.png" alt ="Workout Image" />
+     </div>
+    </Container>
+  )
   }
 
   export default Home;

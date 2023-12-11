@@ -4,13 +4,12 @@ import CustomizeButton from '../customize/CustomizeButton';
 
 //import './App.css';
 
-function Regimen() {
+function Regiment() {
   return (
-    
     <div>
       <CustomizeButton />
     </div>
   );
 }
 
-export default Regimen;
+export default Regiment;
