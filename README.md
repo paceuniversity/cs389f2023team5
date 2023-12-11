@@ -41,7 +41,7 @@ This app is a new way to get motivated for fitness, with planned regiments for b
 
 ### Sprint 3
 
-* [Sprint planning]()
+* [Sprint planning](https://docs.google.com/document/d/1P4nG1RjxHRmeFRHRZLwBGmXb3zKva8YRLRukHDanl70/edit?usp=sharing)
 * [Scrums](https://drive.google.com/drive/folders/1rFaRE4-fISCNYC8GTl70-d2q0JuSjX03?usp=sharing)
 * [Sprint demo video](https://drive.google.com/file/d/1Sc-F98nQGLKvODT4WUgb_YTobtoaVTqS/view?usp=sharing)
 * [Sprint retrospective](https://docs.google.com/document/d/1S32bCGcO3zlW9dG5hsTH7_DXSBPVUCBRuAqSpv2L6TI/edit?usp=sharing)
