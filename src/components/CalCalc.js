@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import { Container } from 'react-bootstrap'; //testing 
 
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import '../index.css';
 import { Menu, MenuItem } from '@mui/material';
+import FormControl from '@mui/material/FormControl';
 
 function CalCalc() {
   // state
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
   const [age, setAge] = useState();
-  const [gender, setGender] = useState('male'); // Default gender
+  const [sex, setSex] = useState('male'); // Default sex
   const [activityLevel, setActivityLevel] = useState('sedentary');
+  const [goal, setGoal] = useState('maintain');
   const [bmr, setBMR] = useState();
 
   const calcBMR = (event) => {
@@ -21,7 +24,7 @@ function CalCalc() {
     if (weight === 0 || height === 0 || age === 0) {
       alert('Please enter a valid weight, height, and age');
     } else {
-      let s = gender === 'male' ? 5 : -161;
+      let s = sex === 'male' ? 5 : -161;
       let bmrValue = 10 * weight + 6.25 * height - 5 * age + s;
       // adjust bmr based on activity lvl
       switch (activityLevel) {
@@ -43,6 +46,18 @@ function CalCalc() {
         default:
           break;
       }
+      switch (activityLevel) {
+        case 'fatLoss':
+          bmrValue -= 300;
+          break;
+        case 'maintain':
+          break;
+        case 'muscleGain':
+          bmrValue += 300;
+          break;
+        default:
+          break;
+      }
       setBMR(bmrValue);
     }
   };
@@ -52,6 +67,7 @@ function CalCalc() {
   };
 
   return (
+    <Container>
     <div className="app">
       <div className="container">
         <h2 className="center">Calories Calculator</h2>
@@ -69,14 +85,19 @@ function CalCalc() {
             <input value={age} onChange={(event) => setAge(event.target.value)} />
           </div>
           <div>
-            <label>Gender</label>
-            <Select value={gender} onChange={(event) => setGender(event.target.value)}>
+            <label>Sex</label>
+            <br></br>
+            <FormControl sx={{ m: 0, minWidth: 10 }} size="small">
+            <Select value={sex} onChange={(event) => setSex(event.target.value)}>
               <MenuItem value="male">Male</MenuItem>
               <MenuItem value="female">Female</MenuItem>
             </Select>
+            </FormControl>
           </div>
           <div>
             <label>Activity Level</label>
+            <br></br>
+            <FormControl sx={{ m: 0, minWidth: 80 }} size="small">
             <Select value={activityLevel} onChange={(event) => setActivityLevel(event.target.value)}>
             <MenuItem value="sedentary">Sedentary</MenuItem>
               <MenuItem value="lightlyActive">Lightly Active</MenuItem>
@@ -84,11 +105,24 @@ function CalCalc() {
               <MenuItem value="veryActive">Very Active</MenuItem>
               <MenuItem value="superActive">Super Active</MenuItem>
             </Select>
+            </FormControl>
           </div>
           <div>
-          <Button variant="contained" className='Button'>Calculate</Button>
+          <label>Goal</label>
+          <br></br>
+          <FormControl sx={{ m: 0, minWidth: 80 }} size="small">
+            <Select value={goal} onChange={(event) => setGoal(event.target.value)}>
+          <MenuItem value={"fatLoss"}>Fat Loss</MenuItem>
+          <MenuItem value={"muscleGain"}>Muscle Gain</MenuItem>
+          <MenuItem value={"maintain"}>Maintain Weight</MenuItem>
+        </Select>
+      </FormControl>
+      </div>
+          <div>
+          <br></br>
+          <Button variant="contained" size='large' className='Button' onClick={calcBMR}>Calculate</Button>
           &nbsp;
-            <Button variant="contained" onClick={reload} type="submit">
+            <Button variant="contained" size='large' onClick={reload} type="submit">
               Reload
             </Button>
 
@@ -100,6 +134,7 @@ function CalCalc() {
         </div>
       </div>
     </div>
+    </Container>
   );
 }
 

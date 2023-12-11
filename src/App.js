@@ -16,12 +16,17 @@ import { signOut } from './components/signOut';
 import './index.css';
 import Navbar from './components/Navbar';
 import { createClient } from "@supabase/supabase-js";
+import Regimen from './components/Regimen.js';
+import Exercise from "./exerciseInfo/Exercise.js";
+import RegimenCalc from './components/RegimenCalc.js';
+import Faq from './components/Faq.js';
+import Feedback from './components/Feedback.js';
+import Home from './components/Home.js';
+import Tools from './components/tools.js'
+
 function App() {
-  const name = "John";
-  const city = "NYC";
-  let [count, setCount] = useState(0);
   const [session, setSession] = useState(null)
-  const supabase = createClient("https://eilymrhzimawhwaeqobo.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpbHltcmh6aW1hd2h3YWVxb2JvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkwNDEyMTEsImV4cCI6MjAxNDYxNzIxMX0.bp6heCDwjm_cH30PJ1XGc87tPS9rB2aXeE_UcUKQWAQ");
+  
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -45,31 +50,16 @@ function App() {
       
       <div>
         <Router>
-          {/* <ul>
-            <li>
-              <Link to="/">Goal</Link>
-            </li>
-            <li><Link to="/">Diary</Link></li>
-
-              <li><Link to ="/about/${name}">About</Link></li>
-
-              <li><Link to ="/log">Log</Link></li>
-            <li>
-              <Link to="/counter">Counter</Link>
-            </li>
-            <li>
-              <Link to="/calcalc">Calorie Calculator</Link>
-            </li>
-            <li>
-              <Link to={`/contact/${name}/${city}`}>Contact</Link>
-            </li>
-          </ul> */}
+       
           
-        
-        <Navbar/>
+        <Navbar />
           <Switch>
             
-            <Route path="/" exact component={Goal} />
+            <Route path="/exercise" exact component={Exercise} />
+            <Route path="/regimencalc" exact component={RegimenCalc} />
+            <Route path="/regimen" exact component={Regimen} />
+            <Route path="/goal" exact component={Goal} />
+            <Route path="/" exact component={Home} />
             <Route path="/diary" exact component = {Diary} />
             <Route path="/about/:name" component = {About}/>
             <Route path="contact" exact component={DefaultContact} />
@@ -78,6 +68,10 @@ function App() {
             <Route path="/calcalc" exact component={CalCalc} />
             <Route path="/signOut" component={signOut} />
             <Route path="/counter" component={Counter} />
+            <Route path="/faq" component={Faq} />
+            <Route path="/feedback" component={Feedback} />
+            <Route path="/tools" component={Tools} />
+
             <Route render={() => <h3>404: Page not found</h3>} />
           </Switch>
         </Router >

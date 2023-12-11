@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../App.css';
 import '../index.css';
 import supabase from '../db/supa';
-import { Container, Button } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
+import Button from '@mui/material/Button'
 import { useHistory } from 'react-router-dom';
 
 const Log = (props) => {
@@ -81,9 +82,9 @@ const Log = (props) => {
         <Container>
             <div className='app'>
             <div className='container'>
-            <div className="App">
+            {/* <div className="App"> */}
                 Track Your Progress!
-            </div>
+            {/* </div> */}
             <div>
                 <p>Bench Press</p>
                 <input type="text" value={count} onChange={handleBenchPressInputChange}></input>
@@ -98,9 +99,8 @@ const Log = (props) => {
                 <p>SqReps</p>
                 <input type="text" value={SquatReps} onChange={handleSqRepsInputChange}></input>
                 <br></br>
-                <Button onClick={handleSubmit}>Enter</Button>
+                <Button variant='contained' size='large' onClick={handleSubmit}>Enter</Button>
             </div>
-            <br></br>
             </div>
             </div>
         </Container>
