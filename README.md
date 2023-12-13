@@ -5,7 +5,7 @@ Buff-Bot
 ## Team members
 
 Wesley Wu, Aiden Nguyen, Anthony Testani, and Alexander Klisouriotis
-TOADD picture of the team
+![image](https://github.com/paceuniversity/cs389f2023team5/assets/145870805/008654b0-c6a3-43db-968e-6e434dd1d145)
 
 ## App description
 This app is a new way to get motivated for fitness, with planned regiments for beginners, and trackers and leaderboards to keep veterans hooked.
@@ -48,7 +48,7 @@ This app is a new way to get motivated for fitness, with planned regiments for b
 
 ## Tools & APIs
 
-*Supabase
+* [Supabase]
 
 ## Final delivery
 
