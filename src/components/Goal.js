@@ -95,10 +95,27 @@ const handleGoalSubmit = async () => {
     { day: 'Saturday', hours: saturday },
     { day: 'Sunday', hours: sunday }
   ];
-
+  resetDatabase();
   for (const dayData of days) {
     console.log(`Updating:`, dayData);
     await addOrUpdateDayHours(dayData);
+  }
+  
+};
+
+
+const resetDatabase = async () => {
+  const { error } = await supabase
+      .from('Regimen')
+      .delete()
+      .select()
+      .neq('id', -1)
+
+      
+  if (error) {
+      console.error(`Error Reseting Problem:`, error);
+  } else {
+      console.log(`Reset Successfully`);
   }
 };
 

@@ -11,6 +11,7 @@ import CustomizeTableWednesday from "./CustomizeTableWednesday";
 import CustomizeTableThursday from "./CustomizeTableThursday";
 import CustomizeTableFriday from "./CustomizeTableFriday";
 import CustomizeTableSaturday from "./CustomizeTableSaturday";
+import '../index.css';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -24,7 +25,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 7 }}>
+        <Box sx={{ p: 7  }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -53,10 +54,10 @@ function CustomizeTabs() {
   };
 
   return (
-    <div sx={{width: '50vw',  overflowX: 'auto'}}>
-    <Box className="tabs" sx={{ width: "80vw", bgcolor: "background.paper",  overflowX: 'auto'}}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider",  overflowX: 'auto' }}>
-        <Tabs value={value} onChange={handleChange} centered>
+    <div sx={{ width: '50vw',  overflowX: 'auto'}}>
+    <Box className="tabs" sx={{ height:"60vh", width: "80vw", bgcolor: "background.paper",  overflowX: 'auto'}}>
+      <Box sx={{  display:"flex", justifyContent:"center", width: "100%", borderBottom: 1, borderColor: "divider",  overflowX: 'auto' }}>
+        <Tabs variant="scrollable" scrollButtons="auto" value={value} onChange={handleChange} centered>
           <Tab label="Sunday" {...a11yProps(0)} />
           <Tab label="Monday" {...a11yProps(1)} />
           <Tab label="Tuesday" {...a11yProps(2)} />

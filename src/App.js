@@ -63,6 +63,7 @@ function App() {
             <Route path="/regimencalc" exact component={RegimenCalc} />
             <Route path="/regimen" exact component={Regimen} />
             <Route path="/" exact component={Home} />
+            <Route path="/goal" exact component={Goal} />
             <Route path="/diary" exact component = {Diary} />
             <Route path="/about/:name" component = {About}/>
             <Route path="contact" exact component={DefaultContact} />

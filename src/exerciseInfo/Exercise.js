@@ -1,8 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
+import _debounce from "lodash/debounce";
+
 import body from "../body.png";
 
 const Exercise = () => {
   const [selectedPart, setSelectedPart] = useState(null);
+  const [imageWidth, setImageWidth] = useState(900);
+  const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
+  const bodyImageRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = _debounce(() => {
+      // Update the image width on window resize if the ref is available
+      if (bodyImageRef.current) {
+        setImageWidth(bodyImageRef.current.clientWidth);
+        calculatePopupPosition(); // Recalculate popup position
+      }
+    }, 200);
+
+    const calculatePopupPosition = () => {
+      if (bodyImageRef.current) {
+        const imageRect = bodyImageRef.current.getBoundingClientRect();
+        const top = imageRect.top + imageRect.height / 2;
+        const left = imageRect.left + imageRect.width / 2;
+
+        setPopupPosition({ top, left });
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    calculatePopupPosition(); // Initial calculation
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const calculateScaledCoords = (originalCoords) => {
+    const scaledCoords = originalCoords
+      .split(",")
+      .map((coord) => coord * (imageWidth / 900));
+    return scaledCoords.join(",");
+  };
 
   const handleAreaClick = (part) => {
     setSelectedPart((prevSelectedPart) =>
@@ -20,12 +60,13 @@ const Exercise = () => {
       style={{ position: "relative", textAlign: "center" }}
     >
       <img
+        ref={bodyImageRef}
         src={body}
         alt="Human Body"
         useMap="#bodyMap"
         style={{
           cursor: "pointer",
-          width: "900px",
+          width: "auto",
           height: "auto",
           margin: "auto",
         }}
@@ -34,85 +75,105 @@ const Exercise = () => {
       <map name="bodyMap">
         <area
           shape="poly"
-          coords="143,231,153,243,152,266,145,293,138,314,117,339,108,306,107,281,114,257,125,251,136,243"
+          coords={calculateScaledCoords(
+            "143,231,153,243,152,266,145,293,138,314,117,339,108,306,107,281,114,257,125,251,136,243"
+          )}
           alt="Biceps"
           onClick={() => handleAreaClick("Biceps")}
         />
         <area
           shape="poly"
-          coords="307,230,298,244,300,267,307,291,315,314,335,340,343,307,344,278,336,254,324,250,314,241"
+          coords={calculateScaledCoords(
+            "307,230,298,244,300,267,307,291,315,314,335,340,343,307,344,278,336,254,324,250,314,241"
+          )}
           alt="Biceps"
           onClick={() => handleAreaClick("Biceps")}
         />
         <area
           shape="poly"
-          coords="539,326,528,300,531,271,537,251,554,237,575,229,579,250,583,267,572,290,565,314,547,326,562,289,562,274,551,285"
+          coords={calculateScaledCoords(
+            "539,326,528,300,531,271,537,251,554,237,575,229,579,250,583,267,572,290,565,314,547,326,562,289,562,274,551,285"
+          )}
           alt="Triceps"
           onClick={() => handleAreaClick("Triceps")}
         />
         <area
           shape="poly"
-          coords="765,328,777,301,774,271,768,250,752,237,729,226,725,250,721,269,734,294,741,317,757,325,742,286,742,273,753,285"
+          coords={calculateScaledCoords(
+            "765,328,777,301,774,271,768,250,752,237,729,226,725,250,721,269,734,294,741,317,757,325,742,286,742,273,753,285"
+          )}
           alt="Triceps"
           onClick={() => handleAreaClick("Triceps")}
         />
         <area
           shape="poly"
-          coords="224,205,223,227,219,248,206,259,191,263,177,265,164,254,152,242,145,230,151,214,165,202,184,194,203,191,217,194"
+          coords={calculateScaledCoords(
+            "224,205,223,227,219,248,206,259,191,263,177,265,164,254,152,242,145,230,151,214,165,202,184,194,203,191,217,194"
+          )}
           alt="Chest"
           onClick={() => handleAreaClick("Chest")}
         />
         <area
           shape="poly"
-          coords="227,208,229,231,235,251,247,259,263,264,279,262,290,253,301,242,307,228,299,212,288,202,271,194,254,191,235,194"
+          coords={calculateScaledCoords(
+            "227,208,229,231,235,251,247,259,263,264,279,262,290,253,301,242,307,228,299,212,288,202,271,194,254,191,235,194"
+          )}
           alt="Chest"
           onClick={() => handleAreaClick("Chest")}
         />
         <area
           shape="poly"
-          coords="580,181,597,182,613,179,629,173,638,181,647,191,652,210,656,191,665,181,674,173,688,178,704,182,724,181,722,190,
-          702,192,718,206,722,220,728,226,722,265,715,293,709,306,694,332,680,373,671,368,656,303,655,301,652,216,650,301,648,303,
-          635,368,623,372,612,336,595,306,588,286,583,267,574,230,583,221,584,207,602,193,583,188"
+          coords={calculateScaledCoords(
+            "580,181,597,182,613,179,629,173,638,181,647,191,652,210,656,191,665,181,674,173,688,178,704,182,724,181,722,190,702,192,718,206,722,220,728,226,722,265,715,293,709,306,694,332,680,373,671,368,656,303,655,301,652,216,650,301,648,303,635,368,623,372,612,336,595,306,588,286,583,267,574,230,583,221,584,207,602,193,583,188"
+          )}
           alt="Back"
           onClick={() => handleAreaClick("Back")}
         />
         <area
           shape="poly"
-          coords="169,404,176,445,185,471,197,503,190,523,179,544,172,570,167,570,162,547,152,520,147,478,152,459,161,449,166,432"
+          coords={calculateScaledCoords(
+            "169,404,176,445,185,471,197,503,190,523,179,544,172,570,167,570,162,547,152,520,147,478,152,459,161,449,166,432"
+          )}
           alt="Quadriceps"
           onClick={() => handleAreaClick("Quadriceps")}
         />
         <area
           shape="poly"
-          coords="282,404,279,435,269,469,253,503,264,526,274,546,279,571,284,571,292,545,302,511,305,483,301,461,291,447,286,432"
+          coords={calculateScaledCoords(
+            "282,404,279,435,269,469,253,503,264,526,274,546,279,571,284,571,292,545,302,511,305,483,301,461,291,447,286,432"
+          )}
           alt="Quadriceps"
           onClick={() => handleAreaClick("Quadriceps")}
         />
         <area
           shape="poly"
-          coords="632,479,594,492,590,482,579,516,571,566,575,611,576,635,599,579,603,602,613,622,617,643,628,622,626,579,624,549,
-          629,537,626,504"
+          coords={calculateScaledCoords(
+            "632,479,594,492,590,482,579,516,571,566,575,611,576,635,599,579,603,602,613,622,617,643,628,622,626,579,624,549,629,537,626,504"
+          )}
           alt="Hamstrings"
           onClick={() => handleAreaClick("Hamstrings")}
         />
         <area
           shape="poly"
-          coords="672,479,709,492,714,482,726,518,734,571,729,612,729,637,719,612,705,578,703,598,693,621,686,642,676,624,681,549,
-          678,532,679,504"
+          coords={calculateScaledCoords(
+            "672,479,709,492,714,482,726,518,734,571,729,612,729,637,719,612,705,578,703,598,693,621,686,642,676,624,681,549,678,532,679,504"
+          )}
           alt="Hamstrings"
           onClick={() => handleAreaClick("Hamstrings")}
         />
         <area
           shape="poly"
-          coords="585,611,594,624,600,648,607,637,613,624,621,652,627,679,618,709,608,728,599,729,593,726,593,715,584,718,575,715,
-          583,767,571,785,575,763,566,704,565,671,570,650"
+          coords={calculateScaledCoords(
+            "585,611,594,624,600,648,607,637,613,624,621,652,627,679,618,709,608,728,599,729,593,726,593,715,584,718,575,715,583,767,571,785,575,763,566,704,565,671,570,650"
+          )}
           alt="Calves"
           onClick={() => handleAreaClick("Calves")}
         />
         <area
           shape="poly"
-          coords="718,612,708,628,705,655,698,637,690,623,683,652,678,679,685,704,696,729,704,729,712,727,713,717,721,719,728,715,
-          722,766,737,789,728,760,739,698,739,664,731,640"
+          coords={calculateScaledCoords(
+            "718,612,708,628,705,655,698,637,690,623,683,652,678,679,685,704,696,729,704,729,712,727,713,717,721,719,728,715,722,766,737,789,728,760,739,698,739,664,731,640"
+          )}
           alt="Calves"
           onClick={() => handleAreaClick("Calves")}
         />
@@ -123,15 +184,17 @@ const Exercise = () => {
         <div
           className="popup-container"
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
+            position: "fixed",
+            top: `${popupPosition.top}px`,
+            left: `${popupPosition.left}px`,
+            transform: "translate(-50%, -50%)", // Center the popup
             width: "100%",
             height: "100%",
             background: "rgba(255, 255, 255, 0.8)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            zIndex: 9999, // Ensure the popup is on top
           }}
         >
           <div
@@ -142,6 +205,7 @@ const Exercise = () => {
               background: "#fff",
               borderRadius: "8px",
               boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+              position: "relative",
             }}
           >
             {/* Close button */}

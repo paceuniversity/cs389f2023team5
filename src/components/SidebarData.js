@@ -36,13 +36,13 @@ export const SidebarData = [
     },
     {
         title: 'Database',
-        path: '/database',
+        path: '/exercise',
         icon: <IoAccessibility/>,
         cName: 'nav-text'
     },
     {
         title: 'Tools',
-        path: '/friends',
+        path: '/tools',
         icon: <FaToolbox  />,
         cName: 'nav-text'
     },
@@ -63,11 +63,12 @@ export const SidebarData = [
         path: '/signout',
         icon: <GoSignOut />,
         cName: 'nav-text'
-    },
-    {
-        title: 'Find Friends?',
-        path: '/find',
-        icon: <FaIcons.FaUsers />,
-        cName: 'nav-text'
     }
+    // ,
+    // {
+    //     title: 'Find Friends?',
+    //     path: '/find',
+    //     icon: <FaIcons.FaUsers />,
+    //     cName: 'nav-text'
+    // }
 ]

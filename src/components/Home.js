@@ -6,6 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Logo from '../images/logo.png';
 
 const Home = (props) => {
 
@@ -17,7 +18,7 @@ const Home = (props) => {
      <h1>Welcome to BuffBot</h1>
      <h2>A free online workout and fitness aid</h2>
      
-     <img src="/workout.png" alt ="Workout Image" />
+     <img src= {Logo} alt ="Workout Image" />
      </div>
     </Container>
   )
