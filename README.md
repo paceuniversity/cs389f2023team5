@@ -53,7 +53,8 @@ This app is a new way to get motivated for fitness, with planned regiments for b
 ## Final delivery
 
 * [Final presentation]()
-* [Poster] ![image](https://github.com/paceuniversity/cs389f2023team5/blob/main/Add%20a%20heading%20(2).png)
+* [Poster] ![image](https://github.com/paceuniversity/cs389f2023team5/assets/70542948/2ee7e488-87ec-40f1-9526-fdbf1d34d3c3)
+
 * [Process description]()
 
 
