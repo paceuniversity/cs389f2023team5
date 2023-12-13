@@ -48,6 +48,8 @@ This app is a new way to get motivated for fitness, with planned regiments for b
 
 ## Tools & APIs
 
+*Supabase
+
 ## Final delivery
 
 * [Final presentation]()
