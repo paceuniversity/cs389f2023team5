@@ -17,9 +17,9 @@ function Navbar() {
     <>
     <IconContext.Provider value={{color: 'white'}}>
       <div className="navbar">
-        <Link to="#" className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar}/>
-        </Link>
+        <button className='menu-bars' onClick={showSidebar} title="Toggle menu">
+            <FaIcons.FaBars />
+        </button>
         <button className="theme-toggle" onClick={toggleTheme} title="Toggle dark mode">
           {isDarkMode ? <FaIcons.FaSun /> : <FaIcons.FaMoon />}
         </button>
