@@ -6,9 +6,11 @@ import {SidebarData} from './SidebarData'
 import './Navbar.css';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { IconContext } from 'react-icons';
+import { useTheme } from '../context/ThemeContext';
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
+    const { isDarkMode, toggleTheme } = useTheme();
 
     const showSidebar = () => setSidebar(!sidebar);
   return (
@@ -18,6 +20,9 @@ function Navbar() {
         <Link to="#" className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar}/>
         </Link>
+        <button className="theme-toggle" onClick={toggleTheme} title="Toggle dark mode">
+          {isDarkMode ? <FaIcons.FaSun /> : <FaIcons.FaMoon />}
+        </button>
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul className='nav-menu-items' onClick={showSidebar}>

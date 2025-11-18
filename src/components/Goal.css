@@ -1,0 +1,232 @@
+.goal-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100% !important;
+}
+
+.goal-app {
+  background: var(--light-bg);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.goal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.goal-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 24px 0;
+}
+
+.goal-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.day-slider-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.day-slider-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.day-slider-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-medium);
+}
+
+.day-slider-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.day-slider-label-secondary {
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 8px;
+}
+
+.day-slider-item .MuiSlider-root {
+  margin: 20px 0;
+}
+
+.day-slider-item .MuiSlider-track {
+  background: var(--secondary-color);
+  height: 6px;
+  border-radius: 3px;
+}
+
+.day-slider-item .MuiSlider-thumb {
+  background: var(--primary-color);
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.day-slider-item .MuiSlider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+}
+
+.day-slider-item .MuiSlider-valueLabel {
+  background: var(--primary-color);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.day-slider-item .MuiSlider-mark {
+  background: var(--border-color);
+}
+
+.goal-button-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+
+.goal-button {
+  background: var(--primary-color) !important;
+  color: white !important;
+  padding: 14px 32px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  text-transform: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3) !important;
+}
+
+.goal-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4) !important;
+}
+
+.goal-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .goal-app {
+    padding: 30px;
+  }
+
+  .day-slider-group {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .goal-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .goal-container {
+    padding: 20px 16px;
+  }
+
+  .goal-app {
+    padding: 24px;
+  }
+
+  .goal-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .goal-subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .day-slider-group {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .day-slider-item {
+    padding: 20px;
+  }
+
+  .day-slider-label {
+    font-size: 15px;
+  }
+
+  .goal-button-container {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .goal-button {
+    width: 100%;
+    padding: 12px 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-container {
+    padding: 16px;
+  }
+
+  .goal-app {
+    padding: 16px;
+  }
+
+  .goal-title {
+    font-size: 20px;
+  }
+
+  .goal-subtitle {
+    font-size: 13px;
+  }
+
+  .day-slider-group {
+    gap: 12px;
+  }
+
+  .day-slider-item {
+    padding: 16px;
+  }
+
+  .day-slider-label {
+    font-size: 14px;
+  }
+
+  .goal-button-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .goal-button {
+    width: 100% !important;
+  }
+}

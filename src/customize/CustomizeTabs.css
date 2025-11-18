@@ -1,0 +1,88 @@
+.customize-container {
+  padding: 24px 0 !important;
+  background: var(--light-bg);
+}
+
+.customize-box {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-medium);
+  transition: all 0.3s ease;
+}
+
+.customize-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.tabs-wrapper {
+  border-bottom: 2px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: var(--light-bg);
+}
+
+.custom-tabs {
+  min-height: 56px !important;
+}
+
+.tab-panel {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-panel .MuiTypography-root {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .customize-box {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .customize-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .tabs-wrapper {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .customize-box {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .customize-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .custom-tabs {
+    min-height: 48px !important;
+  }
+
+  .custom-tabs .MuiTab-root {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+  }
+}

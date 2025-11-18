@@ -1,0 +1,224 @@
+.log-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100% !important;
+}
+
+.log-app {
+  background: var(--light-bg);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.log-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 8px 0;
+}
+
+.log-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.log-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.log-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.log-input-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+
+.log-input-label-hint {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.log-input {
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.log-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+  background: var(--card-bg);
+}
+
+.log-input:hover {
+  border-color: var(--secondary-color);
+}
+
+.log-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.log-progress-indicator {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  background: var(--light-bg);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.log-progress-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.log-progress-text {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.log-button-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+
+.log-button {
+  background: var(--primary-color) !important;
+  color: white !important;
+  padding: 14px 32px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  text-transform: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3) !important;
+  flex: 1;
+}
+
+.log-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4) !important;
+}
+
+.log-button:active {
+  transform: translateY(0) !important;
+}
+
+.log-button:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .log-container {
+    padding: 20px 16px;
+  }
+
+  .log-app {
+    padding: 24px;
+  }
+
+  .log-title {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+
+  .log-subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .log-input-group {
+    gap: 16px;
+  }
+
+  .log-input {
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+
+  .log-button-container {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .log-button {
+    width: 100% !important;
+    padding: 12px 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .log-container {
+    padding: 16px;
+  }
+
+  .log-app {
+    padding: 16px;
+  }
+
+  .log-title {
+    font-size: 22px;
+  }
+
+  .log-subtitle {
+    font-size: 13px;
+  }
+
+  .log-input-field {
+    gap: 6px;
+  }
+
+  .log-input-label {
+    font-size: 15px;
+  }
+
+  .log-input {
+    padding: 11px 12px;
+    font-size: 14px;
+  }
+
+  .log-button {
+    padding: 11px 16px !important;
+    font-size: 14px !important;
+  }
+}

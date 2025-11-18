@@ -10,25 +10,32 @@ import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
+import './Goal.css';
 
 import supabase from '../db/supa';
+import { useAuth } from '../context/AuthContext';
+import AuthModal from './AuthModal';
 
 
 
 
 
 const Goal = (props) => {
-
-    let message;
-    const [count, setCount] = useState(0);
-    const appHistory = useHistory();
-    // undefined when not defined and when definied and not initialized
+  const { session } = useAuth();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState(null);
+  const appHistory = useHistory();
+  
+  React.useEffect(() => {
     if (typeof count === 'undefined') {
-      message = <div>Value not yet defined</div>
+      setMessage(<div>Value not yet defined</div>);
     } else {
-      message = <div>{count}</div>
+      setMessage(<div>{count}</div>);
     }
-    const [goal, setGoal] = React.useState('');
+  }, [count]);
+
+  const [goal, setGoal] = React.useState('');
 
     const handleChange = (event) => {
       setGoal(event.target.value);
@@ -46,6 +53,11 @@ const [saturday, setSaturday] = useState(0);
 const [sunday, setSunday] = useState(0);
 
 const addCountToDatabase = async (data, tableName) => {
+  if (!session) {
+    setShowAuthModal(true);
+    return;
+  }
+
   const { data: insertedData, error } = await supabase
       .from(tableName)
       .insert([data]);
@@ -197,141 +209,150 @@ function valuetext(value) {
 }
 
     return (
-      <Container>
-        <div className='app'>
-        <div className='container'>
-        <h3>Select Number of Hours Free per Day Below</h3><br></br>
-          {/* <TextField id="outlined-basic" label="Monday" variant="outlined" /><br></br><br></br>
-          <TextField id="outlined-basic" label="Tuesday" variant="outlined" /><br></br><br></br>
-          <TextField id="outlined-basic" label="Wednesday" variant="outlined" /><br></br><br></br>
-          <TextField id="outlined-basic" label="Thrusday" variant="outlined" /><br></br><br></br>
-          <TextField id="outlined-basic" label="Friday" variant="outlined" /><br></br><br></br>
-          <TextField id="outlined-basic" label="Saturday" variant="outlined" /><br></br><br></br>
-          <TextField id="outlined-basic" label="Sunday" variant="outlined" /><br></br><br></br> */}
-          <Typography id="input-slider" gutterBottom>
-            Monday
-          </Typography>
-          <Box sx={{ width: 300 }}>
-          <Slider
-            aria-label="Hours"
-            defaultValue={0}
-            getAriaValueText={valuetext}
-            valueLabelDisplay="auto"
-            step={.5}
-            marks
-            min={0}
-            max={2.5}
-            // onChange={(e, value) => handleSliderChange(e, value, 'Monday')}
-            onChange={handleMondayChange}
-
-          /></Box>
-          <Typography id="input-slider" gutterBottom>
-          Tuesday
-        </Typography>
-        <Box sx={{ width: 300 }}>
-        <Slider
-          aria-label="Hours"
-          defaultValue={0}
-          getAriaValueText={valuetext}
-          valueLabelDisplay="auto"
-          step={.5}
-          marks
-          min={0}
-          max={2.5}
-
-          onChange={handleTuesdayChange}
-        /></Box>
-        <Typography id="input-slider" gutterBottom>
-            Wednesday
-          </Typography>
-          <Box sx={{ width: 300 }}>
-          <Slider
-            aria-label="Hours"
-            defaultValue={0}
-            getAriaValueText={valuetext}
-            valueLabelDisplay="auto"
-            step={.5}
-            marks
-            min={0}
-            max={2.5}
-
-            onChange={handleWednesdayChange}
-          /></Box>
-          <Typography id="input-slider" gutterBottom>
-            Thursday
-          </Typography>
-          <Box sx={{ width: 300 }}>
-          <Slider
-            aria-label="Hours"
-            defaultValue={0}
-            getAriaValueText={valuetext}
-            valueLabelDisplay="auto"
-            step={.5}
-            marks
-            min={0}
-            max={2.5}
-
-            onChange={handleThursdayChange}
-             
-          /></Box>
-          <Typography id="input-slider" gutterBottom>
-            Friday
-          </Typography>
-          <Box sx={{ width: 300 }}>
-          <Slider
-            aria-label="Hours"
-            defaultValue={0}
-            getAriaValueText={valuetext}
-            valueLabelDisplay="auto"
-            step={.5}
-            marks
-            min={0}
-            max={2.5}
-
-            onChange={handleFridayChange}
-          /></Box>
-          <Typography id="input-slider" gutterBottom>
-            Saturday
-          </Typography>
-          <Box sx={{ width: 300 }}>
-          <Slider
-            aria-label="Hours"
-            defaultValue={0}
-            getAriaValueText={valuetext}
-            valueLabelDisplay="auto"
-            step={.5}
-            marks
-            min={0}
-            max={2.5}
-
-            onChange={handleSaturdayChange}
-          /></Box>
-          <Typography id="input-slider" gutterBottom>
-            Sunday
-          </Typography>
-          <Box sx={{ width: 300 }}>
-          <Slider
-            aria-label="Hours"
-            defaultValue={0}
-            getAriaValueText={valuetext}
-            valueLabelDisplay="auto"
-            step={.5}
-            marks
-            min={0}
-            max={2.5}
-
-            onChange={handleSundayChange}
-            /></Box>
-
+      <Container className="goal-container">
+        <div className="goal-app">
+          <h1 className="goal-title">Weekly Schedule Setup</h1>
+          <p className="goal-subtitle">Select the number of hours you have available each day to plan your fitness regimen</p>
           
-            <Button variant="contained" size = "large" onClick = {handleGoalSubmit} >Next</Button>
-            {/* onClick={handleGoalSubmit} */}
-          <br></br><br></br>
+          <div className="day-slider-group">
+            <div className="day-slider-item">
+              <label className="day-slider-label">
+                Monday
+                <span className="day-slider-label-secondary">Hours available</span>
+              </label>
+              <Slider
+                aria-label="Hours"
+                defaultValue={0}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                step={.5}
+                marks
+                min={0}
+                max={2.5}
+                onChange={handleMondayChange}
+              />
+            </div>
+
+            <div className="day-slider-item">
+              <label className="day-slider-label">
+                Tuesday
+                <span className="day-slider-label-secondary">Hours available</span>
+              </label>
+              <Slider
+                aria-label="Hours"
+                defaultValue={0}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                step={.5}
+                marks
+                min={0}
+                max={2.5}
+                onChange={handleTuesdayChange}
+              />
+            </div>
+
+            <div className="day-slider-item">
+              <label className="day-slider-label">
+                Wednesday
+                <span className="day-slider-label-secondary">Hours available</span>
+              </label>
+              <Slider
+                aria-label="Hours"
+                defaultValue={0}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                step={.5}
+                marks
+                min={0}
+                max={2.5}
+                onChange={handleWednesdayChange}
+              />
+            </div>
+
+            <div className="day-slider-item">
+              <label className="day-slider-label">
+                Thursday
+                <span className="day-slider-label-secondary">Hours available</span>
+              </label>
+              <Slider
+                aria-label="Hours"
+                defaultValue={0}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                step={.5}
+                marks
+                min={0}
+                max={2.5}
+                onChange={handleThursdayChange}
+              />
+            </div>
+
+            <div className="day-slider-item">
+              <label className="day-slider-label">
+                Friday
+                <span className="day-slider-label-secondary">Hours available</span>
+              </label>
+              <Slider
+                aria-label="Hours"
+                defaultValue={0}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                step={.5}
+                marks
+                min={0}
+                max={2.5}
+                onChange={handleFridayChange}
+              />
+            </div>
+
+            <div className="day-slider-item">
+              <label className="day-slider-label">
+                Saturday
+                <span className="day-slider-label-secondary">Hours available</span>
+              </label>
+              <Slider
+                aria-label="Hours"
+                defaultValue={0}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                step={.5}
+                marks
+                min={0}
+                max={2.5}
+                onChange={handleSaturdayChange}
+              />
+            </div>
+
+            <div className="day-slider-item">
+              <label className="day-slider-label">
+                Sunday
+                <span className="day-slider-label-secondary">Hours available</span>
+              </label>
+              <Slider
+                aria-label="Hours"
+                defaultValue={0}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                step={.5}
+                marks
+                min={0}
+                max={2.5}
+                onChange={handleSundayChange}
+              />
+            </div>
+          </div>
+
+          <div className="goal-button-container">
+            <Button 
+              variant="contained" 
+              size="large"
+              className="goal-button"
+              onClick={handleGoalSubmit}
+            >
+              Continue to Regimen
+            </Button>
+          </div>
         </div>
-        </div>
-        
-        {console.log(props.location.state)}
-        
       </Container>
     )
   }

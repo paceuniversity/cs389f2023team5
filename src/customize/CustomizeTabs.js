@@ -1,17 +1,8 @@
 import React from "react";
-
 import PropTypes from "prop-types";
-
-import { Tabs, Tab, Typography, Box } from "@mui/material";
-
-import CustomizeTableSunday from "./CustomizeTableSunday";
-import CustomizeTableMonday from "./CustomizeTableMonday";
-import CustomizeTableTuesday from "./CustomizeTableTuesday";
-import CustomizeTableWednesday from "./CustomizeTableWednesday";
-import CustomizeTableThursday from "./CustomizeTableThursday";
-import CustomizeTableFriday from "./CustomizeTableFriday";
-import CustomizeTableSaturday from "./CustomizeTableSaturday";
-import '../index.css';
+import { Tabs, Tab, Typography, Box, Container } from "@mui/material";
+import DayWorkoutTable from "./DayWorkoutTable";
+import './CustomizeTabs.css';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -22,11 +13,12 @@ function CustomTabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
+      className="tab-panel"
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 7  }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 3 }}>
+          <Typography component="div">{children}</Typography>
         </Box>
       )}
     </div>
@@ -54,56 +46,67 @@ function CustomizeTabs() {
   };
 
   return (
-    <div sx={{ width: '50vw',  overflowX: 'auto'}}>
-    <Box className="tabs" sx={{ height:"60vh", width: "80vw", bgcolor: "background.paper",  overflowX: 'auto'}}>
-      <Box sx={{  display:"flex", justifyContent:"center", width: "100%", borderBottom: 1, borderColor: "divider",  overflowX: 'auto' }}>
-        <Tabs variant="scrollable" scrollButtons="auto" value={value} onChange={handleChange} centered>
-          <Tab label="Sunday" {...a11yProps(0)} />
-          <Tab label="Monday" {...a11yProps(1)} />
-          <Tab label="Tuesday" {...a11yProps(2)} />
-          <Tab label="Wednesday" {...a11yProps(3)} />
-          <Tab label="Thursday" {...a11yProps(4)} />
-          <Tab label="Friday" {...a11yProps(5)} />
-          <Tab label="Saturday" {...a11yProps(6)} />
-        </Tabs>
+    <Container maxWidth="lg" className="customize-container">
+      <Box className="customize-box">
+        <h1 className="customize-title">Your Weekly Workout Plan</h1>
+        
+        <Box className="tabs-wrapper">
+          <Tabs 
+            variant="scrollable" 
+            scrollButtons="auto" 
+            value={value} 
+            onChange={handleChange} 
+            className="custom-tabs"
+            sx={{
+              "& .MuiTab-root": {
+                textTransform: 'capitalize',
+                fontSize: '16px',
+                fontWeight: 600,
+                transition: 'all 0.3s ease',
+              },
+              "& .MuiTab-root:hover": {
+                color: 'var(--primary-color)',
+              },
+              "& .MuiTabs-indicator": {
+                background: 'linear-gradient(90deg, var(--primary-color), var(--secondary-color))',
+                height: 4,
+                borderRadius: '2px',
+              }
+            }}
+          >
+            <Tab label="Sunday" {...a11yProps(0)} />
+            <Tab label="Monday" {...a11yProps(1)} />
+            <Tab label="Tuesday" {...a11yProps(2)} />
+            <Tab label="Wednesday" {...a11yProps(3)} />
+            <Tab label="Thursday" {...a11yProps(4)} />
+            <Tab label="Friday" {...a11yProps(5)} />
+            <Tab label="Saturday" {...a11yProps(6)} />
+          </Tabs>
+        </Box>
+
+        <CustomTabPanel value={value} index={0}>
+          <DayWorkoutTable day="Sunday" />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <DayWorkoutTable day="Monday" />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <DayWorkoutTable day="Tuesday" />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={3}>
+          <DayWorkoutTable day="Wednesday" />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={4}>
+          <DayWorkoutTable day="Thursday" />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={5}>
+          <DayWorkoutTable day="Friday" />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={6}>
+          <DayWorkoutTable day="Saturday" />
+        </CustomTabPanel>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <div className="sunday-workout">
-          <CustomizeTableSunday />
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <div className="monday-workout">
-          <CustomizeTableMonday />
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        <div className="tuesday-workout">
-          <CustomizeTableTuesday />
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={3}>
-        <div className="wednesday-workout">
-          <CustomizeTableWednesday />
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={4}>
-        <div className="thursday-workout">
-          <CustomizeTableThursday />
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={5}>
-        <div className="friday-workout">
-          <CustomizeTableFriday />
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={6}>
-        <div className="saturday-workout">
-          <CustomizeTableSaturday />
-        </div>
-      </CustomTabPanel>
-    </Box>
-    </div>
+    </Container>
   );
 }
 

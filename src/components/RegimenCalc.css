@@ -1,0 +1,321 @@
+.regimen-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100% !important;
+}
+
+.regimen-app {
+  background: var(--light-bg);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.regimen-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 32px 0;
+}
+
+.regimen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.regimen-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.regimen-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-medium);
+}
+
+.regimen-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.regimen-card-day {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.regimen-card-time {
+  background: var(--secondary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.regimen-card-exercise {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.regimen-card-details {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.regimen-card-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.regimen-card-detail-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.regimen-card-detail-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.regimen-weekly-summary {
+  background: var(--dark-bg);
+  border-radius: 14px;
+  padding: 32px;
+  color: white;
+  margin-top: 40px;
+}
+
+.regimen-weekly-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.regimen-days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.regimen-day-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.regimen-day-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.regimen-day-name {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.regimen-day-hours {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.regimen-day-unit {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.regimen-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.regimen-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.regimen-empty-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.regimen-empty-text {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .regimen-app {
+    padding: 30px;
+  }
+
+  .regimen-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .regimen-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .regimen-days-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .regimen-container {
+    padding: 20px 16px;
+  }
+
+  .regimen-app {
+    padding: 24px;
+  }
+
+  .regimen-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .regimen-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .regimen-card {
+    padding: 20px;
+  }
+
+  .regimen-card-day {
+    font-size: 16px;
+  }
+
+  .regimen-card-exercise {
+    font-size: 15px;
+  }
+
+  .regimen-weekly-summary {
+    padding: 24px;
+    margin-top: 30px;
+  }
+
+  .regimen-weekly-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .regimen-days-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 12px;
+  }
+
+  .regimen-day-hours {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .regimen-container {
+    padding: 16px;
+  }
+
+  .regimen-app {
+    padding: 16px;
+  }
+
+  .regimen-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .regimen-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .regimen-card {
+    padding: 16px;
+  }
+
+  .regimen-card-day {
+    font-size: 14px;
+  }
+
+  .regimen-card-exercise {
+    font-size: 14px;
+  }
+
+  .regimen-card-details {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .regimen-weekly-summary {
+    padding: 16px;
+    margin-top: 20px;
+  }
+
+  .regimen-weekly-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .regimen-days-grid {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  }
+
+  .regimen-day-hours {
+    font-size: 18px;
+  }
+
+  .regimen-empty-state {
+    padding: 40px 16px;
+  }
+
+  .regimen-empty-title {
+    font-size: 20px;
+  }
+
+  .regimen-empty-text {
+    font-size: 14px;
+  }
+}

@@ -1,5 +1,4 @@
-import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Counter from './components/Counter.js';
 import DefaultContact from './components/DefaultContact.js';
 import About from './components/About.js';
@@ -8,14 +7,10 @@ import Goal from './components/Goal.js';
 import CalCalc from './components/CalCalc.js';
 import Diary from './components/Diary.js';
 import Log from './components/Log.js';
-import { Auth } from '@supabase/auth-ui-react';
-import supabase from './db/supa';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { useState, useEffect } from 'react';
 import { signOut } from './components/signOut';
 import './index.css';
 import Navbar from './components/Navbar';
-import { createClient } from "@supabase/supabase-js";
 import Regimen from './components/Regimen.js';
 import Exercise from "./exerciseInfo/Exercise.js";
 import RegimenCalc from './components/RegimenCalc.js';
@@ -25,63 +20,53 @@ import Feedback from './components/Feedback.js';
 import Home from './components/Home.js';
 import Tools from './components/tools.js'
 import Friends from './components/Friends.js';
+import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
-  const [session, setSession] = useState(null)
-  
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
+    // Simulate loading
+    setIsLoading(false);
+  }, []);
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-
-    return () => subscription.unsubscribe()
-  }, [])
-
-  if (!session) {
-    return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
-  else {
-    return (
-      
-      <div>
-        <Router>
-       
-          
-        <Navbar />
-          <Switch>
-            
-            <Route path="/exercise" exact component={Exercise} />
-            <Route path="/friends" exact component={Friends} />
-            <Route path="/find" exact component={Find} />
-            <Route path="/regimencalc" exact component={RegimenCalc} />
-            <Route path="/regimen" exact component={Regimen} />
-            <Route path="/" exact component={Home} />
-            <Route path="/goal" exact component={Goal} />
-            <Route path="/diary" exact component = {Diary} />
-            <Route path="/about/:name" component = {About}/>
-            <Route path="contact" exact component={DefaultContact} />
-            <Route path="contact/:name/:city" component={Contact} />
-            <Route path="/log" component={Log} />
-            <Route path="/calcalc" exact component={CalCalc} />
-            <Route path="/signOut" component={signOut} />
-            <Route path="/counter" component={Counter} />
-            <Route path="/faq" component={Faq} />
-            <Route path="/feedback" component={Feedback} />
-            <Route path="/tools" component={Tools} />
 
-            <Route render={() => <h3>404: Page not found</h3>} />
-          </Switch>
-        </Router >
-      </div>
-    )
-  }
+  return (
+    <ThemeProvider>
+      <AuthProvider>
+        <div>
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route path="/exercise" exact component={Exercise} />
+              <Route path="/friends" exact component={Friends} />
+              <Route path="/find" exact component={Find} />
+              <Route path="/regimencalc" exact component={RegimenCalc} />
+              <Route path="/regimen" exact component={Regimen} />
+              <Route path="/" exact component={Home} />
+              <Route path="/goal" exact component={Goal} />
+              <Route path="/diary" exact component={Diary} />
+              <Route path="/about/:name" component={About} />
+              <Route path="contact" exact component={DefaultContact} />
+              <Route path="contact/:name/:city" component={Contact} />
+              <Route path="/log" component={Log} />
+              <Route path="/calcalc" exact component={CalCalc} />
+              <Route path="/signOut" component={signOut} />
+              <Route path="/counter" component={Counter} />
+              <Route path="/faq" component={Faq} />
+              <Route path="/feedback" component={Feedback} />
+              <Route path="/tools" component={Tools} />
+              <Route render={() => <h3>404: Page not found</h3>} />
+            </Switch>
+          </Router>
+        </div>
+      </AuthProvider>
+    </ThemeProvider>
+  );
 }
 
 export default App;

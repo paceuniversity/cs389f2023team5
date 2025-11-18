@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {Redirect, useHistory} from 'react-router-dom';
 import supabase from '../db/supa';
 import { Container } from 'react-bootstrap';
-
+import './RegimenCalc.css';
+import { useAuth } from '../context/AuthContext';
+import AuthModal from './AuthModal';
 
 const RegimenCalc = () => {
+    const { session } = useAuth();
+    const [showAuthModal, setShowAuthModal] = useState(false);
     const [latestMonday, setLatestMonday]= useState(null);
     const [latestTuesday, setLatestTuesday]= useState(null);
     const [latestWednesday, setLatestWednesday]= useState(null);
@@ -23,6 +27,11 @@ const RegimenCalc = () => {
     let idList = [];
     
     const addToDatabase = async (id, day, wrkoutNme, sets ,reps) => {
+        if (!session) {
+            setShowAuthModal(true);
+            return;
+        }
+
         const { error } = await supabase
             .from('Regimen')
             .upsert([{id, day, name: wrkoutNme, sets, reps}]);
@@ -418,38 +427,94 @@ const RegimenCalc = () => {
     //     </Container>
     // );
     return (
-        <Container>
-        <div className="App">
-            <h1>Workout Plan</h1>
-            <br/>
-            <div className="workouts-grid">
-                {workouts.map(workout => (
-                    <div key={workout.id} className="workout-card">
-                        <div><strong>Day:</strong> {workout.day}</div>
-                        <div><strong>Exercise:</strong> {workout.name}</div>
-                        <div><strong>Sets:</strong> {workout.sets}</div>
-                        <div><strong>Reps:</strong> {workout.reps}</div>
-                    </div>
-                ))}
-            </div>
-                <h2>Monday: {latestMonday}</h2>
-                <h2>Tuesday: {latestTuesday}</h2>
-                <h2>Wednesday: {latestWednesday }</h2>
-                <h2>Thursday: {latestThursday }</h2>
-                <h2>Friday: {latestFriday }</h2>
-                <h2>Saturday: {latestSaturday }</h2>
-                <h2>Sunday: {latestSunday }</h2>
-                
+        <>
+            <Container className="regimen-container">
+                <div className="regimen-app">
+                    <h1 className="regimen-title">Your Workout Plan</h1>
+                    
+                    {workouts.length > 0 ? (
+                        <>
+                            <div className="regimen-grid">
+                                {workouts.map(workout => (
+                                    <div key={workout.id} className="regimen-card">
+                                        <div className="regimen-card-header">
+                                            <span className="regimen-card-day">{workout.day}</span>
+                                            <span className="regimen-card-time">Workout</span>
+                                        </div>
+                                        <div className="regimen-card-exercise">{workout.name}</div>
+                                        <div className="regimen-card-details">
+                                            <div className="regimen-card-detail">
+                                                <span className="regimen-card-detail-label">Sets</span>
+                                                <span className="regimen-card-detail-value">{workout.sets}</span>
+                                            </div>
+                                            <div className="regimen-card-detail">
+                                                <span className="regimen-card-detail-label">Reps</span>
+                                                <span className="regimen-card-detail-value">{workout.reps}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
 
-                
-            </div>
-        </Container>
+                            <div className="regimen-weekly-summary">
+                                <h2 className="regimen-weekly-title">Weekly Schedule</h2>
+                                <div className="regimen-days-grid">
+                                    <div className="regimen-day-item">
+                                        <div className="regimen-day-name">Monday</div>
+                                        <div className="regimen-day-hours">{latestMonday}</div>
+                                        <div className="regimen-day-unit">hrs</div>
+                                    </div>
+                                    <div className="regimen-day-item">
+                                        <div className="regimen-day-name">Tuesday</div>
+                                        <div className="regimen-day-hours">{latestTuesday}</div>
+                                        <div className="regimen-day-unit">hrs</div>
+                                    </div>
+                                    <div className="regimen-day-item">
+                                        <div className="regimen-day-name">Wednesday</div>
+                                        <div className="regimen-day-hours">{latestWednesday}</div>
+                                        <div className="regimen-day-unit">hrs</div>
+                                    </div>
+                                    <div className="regimen-day-item">
+                                        <div className="regimen-day-name">Thursday</div>
+                                        <div className="regimen-day-hours">{latestThursday}</div>
+                                        <div className="regimen-day-unit">hrs</div>
+                                    </div>
+                                    <div className="regimen-day-item">
+                                        <div className="regimen-day-name">Friday</div>
+                                        <div className="regimen-day-hours">{latestFriday}</div>
+                                        <div className="regimen-day-unit">hrs</div>
+                                    </div>
+                                    <div className="regimen-day-item">
+                                        <div className="regimen-day-name">Saturday</div>
+                                        <div className="regimen-day-hours">{latestSaturday}</div>
+                                        <div className="regimen-day-unit">hrs</div>
+                                    </div>
+                                    <div className="regimen-day-item">
+                                        <div className="regimen-day-name">Sunday</div>
+                                        <div className="regimen-day-hours">{latestSunday}</div>
+                                        <div className="regimen-day-unit">hrs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="regimen-empty-state">
+                            <div className="regimen-empty-icon">📋</div>
+                            <h2 className="regimen-empty-title">No Workouts Yet</h2>
+                            <p className="regimen-empty-text">Your personalized workout plan will appear here once generated</p>
+                        </div>
+                    )}
+                </div>
+            </Container>
+            <AuthModal
+                open={showAuthModal}
+                onClose={() => setShowAuthModal(false)}
+                title="Sign in to create your regimen"
+            />
+        </>
     );
-
-
-
-
 }
+
 export default RegimenCalc;
 
 /* import React, { useState, useEffect } from 'react';

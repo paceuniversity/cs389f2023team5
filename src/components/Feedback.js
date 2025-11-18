@@ -50,17 +50,25 @@ import { Container } from 'react-bootstrap';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import supabase from '../db/supa'; // Import your Supabase instance
+import './Feedback.css';
+import supabase from '../db/supa';
+import { useAuth } from '../context/AuthContext';
+import AuthModal from './AuthModal';
 
 const Feedback = () => {
-    // State to store the user input
+    const { session } = useAuth();
+    const [showAuthModal, setShowAuthModal] = useState(false);
     const [feedback, setFeedback] = useState('');
 
-    // Function to add feedback to the database
     const addFeedbackToDatabase = async (message) => {
+        if (!session) {
+            setShowAuthModal(true);
+            return;
+        }
+
         const { error } = await supabase
-            .from('Comments') // The table name
-            .insert([{ Message: message }]); // Inserting the feedback
+            .from('Comments')
+            .insert([{ Message: message }]);
 
         if (error) {
             console.error('Error adding feedback to database:', error);
@@ -77,30 +85,43 @@ const Feedback = () => {
     };
 
     return (
-        <Container>
-            <div className="App">
-                <h1>Feedback!</h1>
-                <h2>Please let us know what you think of the app. Any comments, concerns, or suggestions for things to see in the future.</h2>
-                <Box
-                    component="form"
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '50vw' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <TextField
-                        label="Your Feedback"
-                        multiline
-                        rows={4}
-                        variant="outlined"
-                        value={feedback}
-                        onChange={(e) => setFeedback(e.target.value)}
-                    />
-                    <br />
-                    <Button variant="contained" onClick={submitFeedback}>Submit Feedback</Button>
-                </Box>
+        <Container className="feedback-container">
+            <div className="feedback-app">
+                <h1 className="feedback-title">Send Us Your Feedback</h1>
+                <p className="feedback-subtitle">
+                    We'd love to hear from you! Please share your thoughts, comments, concerns, or suggestions to help us improve BuffBot.
+                </p>
+                
+                <div className="feedback-form">
+                    <div className="feedback-textarea-group">
+                        <label className="feedback-label">Your Message</label>
+                        <textarea
+                            className="feedback-textarea"
+                            placeholder="Tell us what you think about the app..."
+                            value={feedback}
+                            onChange={(e) => setFeedback(e.target.value)}
+                        />
+                        <span className="feedback-char-count">{feedback.length} characters</span>
+                    </div>
+
+                    <div className="feedback-button-container">
+                        <Button 
+                            variant="contained"
+                            className="feedback-button"
+                            onClick={submitFeedback}
+                            disabled={feedback.trim().length === 0}
+                        >
+                            Submit Feedback
+                        </Button>
+                    </div>
+                </div>
             </div>
+            
+            <AuthModal
+                open={showAuthModal}
+                onClose={() => setShowAuthModal(false)}
+                title="Sign in to submit feedback"
+            />
         </Container>
     )
 }
