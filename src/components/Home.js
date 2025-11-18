@@ -47,7 +47,7 @@ const Home = (props) => {
           variant="contained" 
           size="large"
           sx={{
-            background: 'linear-gradient(135deg, var(--primary-color) 0%, #ff5252 100%)',
+            background: 'var(--primary-color)',
             padding: '14px 32px',
             fontSize: '16px',
             fontWeight: 600,
